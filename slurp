@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ -z "$1" ];
+then
+	echo "usage: slurp <name>"
+fi
+
+PICDIR=/home/bryanh/Pictures
+TOPIC="unsorted"
+SRCDIR=/media
+DSTDIR=$PICDIR/$TOPIC/$1
+count=0
+
+mkdir -p "$DSTDIR"
+
+for PIC in $(find $SRCDIR -iname "*.jpg" -o -iname "*.avi" -o -iname "*.mov" -o -iname "*.cr2");
+do
+	pic=$PIC
+	declare -l pic
+	pic=$pic
+	cp -av "$PIC" "$DSTDIR/$(basename $pic)"
+	count=$((count+1))
+done
+
+echo "copied $count files to '$DSTDIR'"
