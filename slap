@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z "$1" ];
+then
+	echo "usage: slap <name>"
+fi
+
+exiftool -v '-filename<createdate' -d "%Y%m%d-$1-%%.4C.%%e" .
